@@ -1,28 +1,30 @@
-#Conexión con la base de datos
-
-#Importación de las librerías
-
-from sqlalchemy import create_engine,event #Llamar la librería para la comunicación con la base de datos
-from sqlalchemy.orm import sessionmaker #abrir un canal hacia la base de datos
+from sqlalchemy import create_engine,event
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy.engine import Engine
 
-#Datos para la conexión a base de datos
 
-dataBaseName = "gestordb"
-userName = "root"
-userPassword = ""
-connectionPort = 3306
-server = "localhost"
+#datos para la conexion a BD
 
-#Creando la conexión
+dataBaseName="gestordb"
 
-dataBaseConnection = f"mysql+mysqlconnector://{userName}:{userPassword}@{server}:{connectionPort}/{dataBaseName}"
+#Usuario BD
+userName="root"
 
-#Creo el motor de conexión
+#Contraseña del usuario
+userPassword=""
 
-engine = create_engine(dataBaseConnection)
+#PUERTO DE CONEXION
+connectionPort=3306
 
-#Abrir la sesión con la base de datos
+#SERVIDOR CONEXION
+server="localhost"
 
-SessionLocal = sessionmaker(autocommit = False, autoflush = False, bind = engine)
+#creando la conexion
+dataBaseConnection=f"mysql+mysqlconnector://{userName}:{userPassword}@{server}:{connectionPort}/{dataBaseName}"
+
+#creo el motor de conexion
+engine=create_engine(dataBaseConnection)
+
+#abrir la sesion con la bd
+SessionLocal=sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

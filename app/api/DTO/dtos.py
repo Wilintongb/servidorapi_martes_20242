@@ -1,20 +1,64 @@
-from pydantic import BaseModel,Field  #Paquete del api que permite crear un modelo base del DTO
-from datetime import date  #Paquete para fechas y horas.
+from pydantic import BaseModel, Field
+from datetime import date
 
-#Los DTO son clases que establecen el modelo de transferencia de datos.
-
-class UsuarioDTOPeticion(BaseModel): #Petición para guardar los datos en la BD
-    nombres: str
+#LOS DTO SON CLASES QUE ESTABLECEN EL MODELO DE TRANSFERENCIA DE DATOS
+class UsuarioDTOPeticion(BaseModel):
+    nombres:str
     fechaNacimiento:date
-    ubicacion: str
-    metaAhorro: float
-    class config:
-        orm_mode = True
+    ubicacion:str
+    metaAhorro:float
+    class Config:
+        orm_mode=True #ORM es el traductor entre python y la BD
 
-class UsuarioDTORespuesta(BaseModel): #Petición para traer los datos de la BD
-    id: int
-    nombres: str
-    metaAhorro: float
-    class config:
-        orm_mode = True
-        
+class UsuarioDTORespuesta(BaseModel):
+    id:int
+    nombres:str
+    metaAhorro:float
+    class Config:
+        orm_mode=True #ORM es el traductor entre python y la BD
+
+class GastoDTOPeticion(BaseModel):
+    descripcion:str
+    valor:int
+    fecha:date
+    class Config:
+        orm_mode=True
+
+class GastoDTORespuesta(BaseModel):
+    id:int
+    descripcion:str
+    valor:int
+    fecha:date
+    class Config:
+        orm_mode=True
+
+class CategoriaDTOPeticion(BaseModel):
+    nombre:str
+    descripcion:str
+    fotoCategoria:str
+    class Config:
+        orm_mode=True
+
+class CategoriaDTORespuesta(BaseModel):
+    id:int
+    nombre:str
+    descripcion:str
+    fotoCategoria:str
+    class Config:
+        orm_mode=True
+
+class IngreseDTOPeticion(BaseModel):
+    valor:int
+    descripcion:str
+    fecha:date
+    class Config:
+        orm_mode=True
+
+class IngresoDTORespuesta(BaseModel):
+    id:int
+    valor:int
+    descripcion:str
+    fecha:date
+    class Config:
+        orm_mode=True
+    
